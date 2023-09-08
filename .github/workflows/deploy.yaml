@@ -13,7 +13,7 @@ jobs:
 
       - name: Install yq and Convert
         run: |
-             snap install yq
+             sudo snap install yq
              yq -i '.spec.template.spec.containers[0].image = "${{ vars.DOCKER_USERNAME}}/${{ vars.DOCKER_REPO }}:${{ github.sha }}"' deployment.yaml
     
 
