@@ -15,7 +15,6 @@ jobs:
         run: |
              sudo snap install yq
              yq -i '.spec.template.spec.containers[0].image = "${{ vars.DOCKER_USERNAME}}/${{ vars.DOCKER_REPO }}:${{ github.sha }}"' deployments/deployment.yaml
-    
 
       - name: kubectl CLI Action
         uses: teknatha136/actions-kubectl@v1.0.0
@@ -28,3 +27,9 @@ jobs:
           manifests: |
             deployments/deployment.yaml
           kubeconformOpts: -summary
+          
+      - name: Send message
+        if: steps.docker-build.outcome == 'success'
+        run: |
+            MESSAGE="Deployed to Dev by ${{ github.actor }}from ${{ github.ref_name }}"
+            curl -X POST -H 'Content-Type: application/json' '${{ secrets.GOOGLE_CHAT_WEBHOOK }}' -d "{'text': '$MESSAGE'}"
