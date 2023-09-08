@@ -1,0 +1,35 @@
+name: Push Docker Image to Docker Hub
+
+on:
+  push:
+    branches: [ test/lint/yq ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install yq and Convert
+        run: |
+             sudo snap install yq
+             yq -i '.spec.template.spec.containers[0].image = "${{ vars.DOCKER_USERNAME}}/${{ vars.DOCKER_REPO }}:${{ github.sha }}"' deployments/deployment.yaml
+
+      - name: kubectl CLI Action
+        uses: teknatha136/actions-kubectl@v1.0.0
+        with:
+          kubectl-version: v1.27.3
+      
+      - name: Lint Action      
+        uses: azure/k8s-lint@v1
+        with:
+          manifests: |
+            deployments/deployment.yaml
+          kubeconformOpts: -summary
+          
+      - name: Send message
+        if: steps.docker-build.outcome == 'success'
+        run: |
+            MESSAGE="Deployed to Dev by ${{ github.actor }}from ${{ github.ref_name }}"
+            curl -X POST -H 'Content-Type: application/json' '${{ secrets.GOOGLE_CHAT_WEBHOOK }}' -d "{'text': '$MESSAGE'}"
