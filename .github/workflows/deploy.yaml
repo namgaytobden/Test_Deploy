@@ -2,7 +2,7 @@ name: Push Docker Image to Docker Hub
 
 on:
   push:
-    branches: [ test/lint/yq ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -22,8 +22,6 @@ jobs:
         uses: teknatha136/actions-kubectl@v1.0.0
         with:
           kubectl-version: v1.27.3
-          kube-config: ${{ secrets.KUBE_CONFIG }}
-         
          
         # Checks Format, Configuration errors, security issues and dry runs inside the K8s cluseter and checks rediness.
       - uses: azure/setup-kubectl@v2.0
