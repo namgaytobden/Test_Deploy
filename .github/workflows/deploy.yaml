@@ -30,3 +30,18 @@ jobs:
 #          lintType: dryrun
 #          manifests: |
 #             deployments/deployment.yaml
+
+
+      - name: Clone Private Repository
+        uses: actions/checkout@v3
+        with:
+          repository: namgaytobden/manifest
+          token: ${{ secrets.BT_MANIFEST_PULL_PUSH }}
+          path: manifest/
+          ref: main
+
+      - name: Install yq and Convert
+        run: |
+          ls
+          cd manifest
+          ls
