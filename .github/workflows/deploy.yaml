@@ -30,5 +30,8 @@ jobs:
           image: image:tag
           manifest_path: manifest/deployment/.
           namespace: test
-          
+
+      - name: Check 
+        run: | 
+          cat manifest/deployment/*
           
