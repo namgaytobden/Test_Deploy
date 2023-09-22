@@ -11,27 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-        # Installs yq and modifies manifests, replacement for sed 
-      - name: Install yq and Convert
-        run: |
-          sudo snap install yq
-          yq -i '.spec.template.spec.containers[0].image = "${{ vars.DOCKER_REPO }}:${{ github.sha }}"' deployments/deployment.yaml
-
-        # Needs kubectl installed for k8s-lint
-      - name: kubectl CLI Action
-        uses: teknatha136/actions-kubectl@v1.0.0
-        with:
-          kubectl-version: v1.27.3
-         
-        # Checks Format, Configuration errors, security issues and dry runs inside the K8s cluseter and checks rediness.
-#      - uses: azure/setup-kubectl@v2.0
-#      - uses: azure/k8s-lint@v1
-#        with:
-#          lintType: dryrun
-#          manifests: |
-#             deployments/deployment.yaml
-
-
       - name: Clone Private Repository
         uses: actions/checkout@v3
         with:
@@ -39,9 +18,21 @@ jobs:
           token: ${{ secrets.TOKEN }}
           path: manifest/
           ref: main
+      
+      - name: Lint Action 
+        uses: azure/k8s-lint@v2
+        with:
+          manifests: |
+              manifest/deployment/*
+          kubeconformOpts: -summary
 
-      - name: Install yq and Convert
-        run: |
-          ls
-          cd manifest
-          ls
+      - name: Deploy to the Kubernetes cluster
+        uses: azure/k8s-deploy@v4
+        with:
+            namespace: testdeploy
+            manifests: |
+              deployment/mainfest/deployment.yaml
+              deployment/mainfest/ingress.yaml
+              deployment/mainfest/service.yaml
+            images: |
+              ${{ vars.DOCKER_REPO }}:${{ github.sha }}
