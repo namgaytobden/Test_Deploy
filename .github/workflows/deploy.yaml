@@ -27,7 +27,7 @@ jobs:
 
       - uses: namgaytobden/k8s-manifestation@main
         with:
-          image: image2123123
+          image: "egp/ubun-be:3965f9d111768451d2b4f76d1d3c5348d253849b"
           manifest_path: manifest/deployment/
 
       - name: Check 
