@@ -28,8 +28,7 @@ jobs:
       - uses: namgaytobden/k8s-manifestation@main
         with:
           image: image:tag
-          manifest_path: manifest/deployment/.
-          namespace: test
+          manifest_path: manifest/deployment/
 
       - name: Check 
         run: | 
