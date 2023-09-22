@@ -14,35 +14,10 @@ jobs:
       - name: Clone Private Repository
         uses: actions/checkout@v3
         with:
-<<<<<<< HEAD
-          kubectl-version: v1.27.3
-         
-        # Checks Format, Configuration errors, security issues and dry runs inside the K8s cluseter and checks rediness.
-#      - uses: azure/setup-kubectl@v2.0
-#      - uses: azure/k8s-lint@v1
-#        with:
-#          lintType: dryrun
-#          manifests: |
-#             deployments/deployment.yaml
-
-
-      - name: Clone Private Repository
-        uses: actions/checkout@v3
-        with:
-=======
->>>>>>> 3380cb9 (Updated: apply manifest workflow)
           repository: namgaytobden/manifest
           token: ${{ secrets.TOKEN }}
           path: manifest/
           ref: main
-<<<<<<< HEAD
-
-      - name: Install yq and Convert
-        run: |
-          ls
-          cd manifest
-          ls
-=======
       
       - name: Lint Action 
         uses: azure/k8s-lint@v2
@@ -61,4 +36,3 @@ jobs:
               deployment/mainfest/service.yaml
             images: |
               ${{ vars.DOCKER_REPO }}:${{ github.sha }}
->>>>>>> 3380cb9 (Updated: apply manifest workflow)
