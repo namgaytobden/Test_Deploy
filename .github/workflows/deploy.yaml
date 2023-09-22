@@ -27,7 +27,7 @@ jobs:
 
       - uses: namgaytobden/k8s-manifestation@main
         with:
-          image: image:tag
+          image: image2123123
           manifest_path: manifest/deployment/
 
       - name: Check 
