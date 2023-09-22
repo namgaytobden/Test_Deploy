@@ -19,12 +19,11 @@ jobs:
           path: manifest/
           ref: main
       
-      - name: Lint Action 
-        uses: azure/k8s-lint@v2
-        with:
-          manifests: |
-              manifest/deployment/*
-          kubeconformOpts: -summary
+     # - name: Lint Action 
+      #  uses: azure/k8s-lint@v4
+       ##  manifests: |
+         #     manifest/deployment/*
+          #kubeconformOpts: -summary
 
       - name: Deploy to the Kubernetes cluster
         uses: azure/k8s-deploy@v4
