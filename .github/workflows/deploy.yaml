@@ -21,17 +21,14 @@ jobs:
       
      # - name: Lint Action 
       #  uses: azure/k8s-lint@v4
-       ##  manifests: |
+       #  manifests: |
          #     manifest/deployment/*
           #kubeconformOpts: -summary
 
-      - name: Deploy to the Kubernetes cluster
-        uses: azure/k8s-deploy@v4
+      - uses: namgaytobden/k8s-manifestation@main
         with:
-            namespace: testdeploy
-            manifests: |
-              deployment/mainfest/deployment.yaml
-              deployment/mainfest/ingress.yaml
-              deployment/mainfest/service.yaml
-            images: |
-              ${{ vars.DOCKER_REPO }}:${{ github.sha }}
+          image: image:tag
+          manifest_path: manifest/deployment/.
+          namespace: test
+          
+          
