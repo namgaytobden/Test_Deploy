@@ -27,7 +27,7 @@ jobs:
 
       - uses: namgaytobden/k8s-manifestation@main
         with:
-          image: change
+          image: namgaytobden/rails-test:7744821a249a7a1934c474810229649487da8a04
           manifest_path: manifest/deployment/
 
       - name: Check 
