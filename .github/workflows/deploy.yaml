@@ -25,10 +25,13 @@ jobs:
          #     manifest/deployment/*
           #kubeconformOpts: -summary
 
-      - uses: namgaytobden/k8s-manifestation@main
+      - uses: namgaytobden/k8s-Manifestation@main
         with:
-          image: namgaytobden/rails-test:7744821a249a7a1934c474810229649487da8a04
           manifest_path: manifest/deployment/
+          tag: image
+          block: .spec.template.spec.containers[0].image
+          value: namgaytobden/rails-test:7744821a249a7a1934c474810229649487da8a04
+
 
       - name: Check 
         run: | 
