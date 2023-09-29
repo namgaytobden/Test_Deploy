@@ -30,7 +30,7 @@ jobs:
           manifest_path: manifest/deployment/
           id: image | Deployment
           key: .spec.template.spec.containers[0].image | .metadata.name
-          value: namgaytobden/rails-test:7744821a249a7a1934c474810229649487da8a04 | sucess
+          value: namgaytobden/rails-test1:7744821 | sucess-test2
 
 
       - name: Check 
