@@ -28,9 +28,9 @@ jobs:
       - uses: namgaytobden/k8s-Manifestation@main
         with:
           manifest_path: manifest/deployment/
-          id: image | Deployment
-          key: .spec.template.spec.containers[0].image | .metadata.name
-          value: namgaytobden/rails-test1:7744821 | sucess-test2
+          id: image | Deployment | deployment-puma
+          key: .spec.template.spec.containers[0].image | .metadata.name | .spec.template.spec.imagePullSecrets[0].
+          value: namgaytobden/rails-test3:7744821 | sucess-test3 | test-3
 
 
       - name: Check 
