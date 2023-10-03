@@ -28,8 +28,8 @@ jobs:
       - uses: namgaytobden/k8s-Manifestation@main
         with:
           manifest_path: manifest/deployment/
-          id: image | Deployment | deployment-puma | service
-          key: .spec.template.spec.containers[0].image | .metadata.name | .spec.template.spec.imagePullSecrets[0].name | .spec.template.spec.metadata.name |
+          id: image | Deployment | deployment-puma | Certificate
+          key: .spec.template.spec.containers[0].image | .metadata.name | .spec.template.spec.imagePullSecrets[0].name | .kind
           value: namgaytobden/rails-test3:77 | sucess-test10 | test-12 | test-service
 
       - name: Check 
