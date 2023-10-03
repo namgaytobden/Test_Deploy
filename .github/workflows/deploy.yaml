@@ -30,7 +30,7 @@ jobs:
           manifest_path: manifest/deployment/
           id: image | Deployment | deployment-puma
           key: .spec.template.spec.containers[0].image | .metadata.name | .spec.template.spec.imagePullSecrets[0].name
-          value: namgaytobden/rails-test3:7744821 | sucess-test3 | test-3
+          value: namgaytobden/rails-test3:7744821 | sucess-test5 | test-5
 
 
       - name: Check 
