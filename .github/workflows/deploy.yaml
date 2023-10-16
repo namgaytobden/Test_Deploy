@@ -34,4 +34,4 @@ jobs:
 
       - name: Check 
         run: | 
-          cat manifest/deployment/*
+          cat manifest/deployment/* #change
