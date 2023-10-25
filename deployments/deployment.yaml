@@ -2,8 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-      enviroment: rails
-  name:  hello_rails
+    enviroment: rails
+  name: hello_rails
 spec:
   replicas: 3
   selector:
@@ -21,5 +21,5 @@ spec:
         enviroment: rails
     spec:
       containers:
-        - image: image
-          name: hello_rails 
+        - image: '1238u182u38123'
+          name: hello_rails
