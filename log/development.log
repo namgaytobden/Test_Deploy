@@ -38,3 +38,30 @@ Processing by HelloWorldController#index as HTML
 Completed 200 OK in 96ms (Views: 91.5ms | Allocations: 30281)
 
 
+Started GET "/" for ::1 at 2023-10-25 18:33:10 +0600
+Processing by HelloWorldController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering hello_world/index.html.erb within layouts/application
+  Rendered hello_world/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 554)
+  Rendered layout layouts/application.html.erb (Duration: 212.3ms | Allocations: 81040)
+Completed 200 OK in 222ms (Views: 217.8ms | Allocations: 85065)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-25 18:36:29 +0600
+Processing by HelloWorldController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering hello_world/index.html.erb within layouts/application
+  Rendered hello_world/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2529)
+Completed 200 OK in 8ms (Views: 7.4ms | Allocations: 2871)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-25 18:36:34 +0600
+Processing by HelloWorldController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering hello_world/index.html.erb within layouts/application
+  Rendered hello_world/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 2534)
+Completed 200 OK in 10ms (Views: 9.7ms | Allocations: 2827)
+
+

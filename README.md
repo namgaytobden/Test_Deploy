@@ -20,7 +20,7 @@ When deploying an application Kinsta will automatically create processes based o
 ```
 web: rails server
 ```
-```
+```yaml
 test
 ```
 repo
