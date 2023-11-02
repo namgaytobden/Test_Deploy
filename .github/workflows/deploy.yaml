@@ -1,4 +1,4 @@
-name: Push Docker Image to Docker Hub
+name: Deploy
 
 on:
   workflow_dispatch:
